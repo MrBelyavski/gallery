@@ -1,17 +1,7 @@
-const accessKey = '';
+import { loadImages } from './api.js';
 
-async function loadImages(query = '') {
-  let url = '';
-  if (query) {
-    url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=12&client_id=${accessKey}`;
-  } else {
-    url = `https://api.unsplash.com/photos/random?count=12&client_id=${accessKey}`;
-  }
-
-  const response = await fetch(url);
-  const data = await response.json();
-  const images = query ? data.results : data;
-
+async function renderImages(query = '') {
+  const images = await loadImages(query);
   const gallery = document.querySelector('.gallery-grid');
   gallery.innerHTML = '';
   images.forEach(img => {
@@ -21,10 +11,10 @@ async function loadImages(query = '') {
   });
 }
 
-window.onload = () => loadImages();
+window.onload = () => renderImages();
 
-document.getElementById('search').addEventListener('submit', function(e) {
+document.querySelector('.search').addEventListener('submit', function(e) {
   e.preventDefault();
-  const query = document.getElementById('search-input').value.trim();
-  loadImages(query);
+  const query = document.querySelector('.search-input').value.trim();
+  renderImages(query);
 });
