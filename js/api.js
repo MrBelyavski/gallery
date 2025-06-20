@@ -2,12 +2,12 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const UNSPLASH_ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 const IMAGES_PER_PAGE = 12;
 
-async function loadImages(query = '') {
+async function loadImages(query = '', page = 1) {
   let url = '';
   if (query) {
-    url = `${API_BASE_URL}/search/photos?query=${encodeURIComponent(query)}&per_page=${IMAGES_PER_PAGE}&client_id=${UNSPLASH_ACCESS_KEY}`;
+    url = `${API_BASE_URL}/search/photos?query=${encodeURIComponent(query)}&per_page=${IMAGES_PER_PAGE}&page=${page}&client_id=${UNSPLASH_ACCESS_KEY}`;
   } else {
-    url = `${API_BASE_URL}/photos/random?count=${IMAGES_PER_PAGE}&client_id=${UNSPLASH_ACCESS_KEY}`;
+    url = `${API_BASE_URL}/photos?per_page=${IMAGES_PER_PAGE}&page=${page}&client_id=${UNSPLASH_ACCESS_KEY}`;
   }
   try {
     const response = await fetch(url);
