@@ -9,9 +9,17 @@ async function loadImages(query = '') {
   } else {
     url = `${API_BASE_URL}/photos/random?count=${IMAGES_PER_PAGE}&client_id=${UNSPLASH_ACCESS_KEY}`;
   }
-  const response = await fetch(url);
-  const data = await response.json();
-  return query ? data.results : data;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Ошибка загрузки: ${response.status} ${response.statusText}`);
+    }
+    const data = await response.json();
+    return query ? data.results : data;
+  } catch (error) {
+    console.error('Ошибка при загрузке изображений:', error);
+    return [];
+  }
 }
 
 export { loadImages, IMAGES_PER_PAGE };
