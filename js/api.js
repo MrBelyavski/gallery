@@ -18,7 +18,7 @@ async function loadImages(query = '', page = 1) {
     return query ? data.results : data;
   } catch (error) {
     console.error('Ошибка при загрузке изображений:', error);
-    return [];
+    throw error;
   }
 }
 

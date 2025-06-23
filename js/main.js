@@ -1,20 +1,35 @@
 import { loadImages, IMAGES_PER_PAGE } from './api.js';
+import { validateInput } from './validation.js';
 
 let currentPage = 1;
 let currentQuery = '';
 let isLastPage = false;
+let isLoading = false;
 
 async function renderImages(query = '', page = 1, append = false) {
+  if (isLoading) return;
+  isLoading = true;
+  
   const gallery = document.querySelector('.gallery-grid');
   const status = document.querySelector('.gallery-status');
   const moreBtn = document.querySelector('.gallery-more');
+  
   if (!append) gallery.innerHTML = '';
 
-  const images = await loadImages(query, page);
+  let images;
+  try {
+    images = await loadImages(query, page);
+  } catch (error) {
+    if (status) status.textContent = 'Ошибка загрузки изображений';
+    if (moreBtn) moreBtn.style.display = 'none';
+    isLoading = false;
+    return;
+  }
 
   if (!append && images.length === 0) {
-    if (status) status.textContent = 'Изображения не найдены или произошла ошибка.';
+    if (status) status.textContent = 'Изображения не найдены';
     if (moreBtn) moreBtn.style.display = 'none';
+    isLoading = false;
     return;
   }
 
@@ -39,6 +54,8 @@ async function renderImages(query = '', page = 1, append = false) {
     if (moreBtn) moreBtn.style.display = 'none';
     isLastPage = true;
   }
+  
+  isLoading = false;
 }
 
 window.onload = () => {
@@ -49,13 +66,20 @@ window.onload = () => {
 
 document.querySelector('.search').addEventListener('submit', function(e) {
   e.preventDefault();
-  currentQuery = document.querySelector('.search-input').value.trim();
+  const inputElement = document.querySelector('.search-input');
+  const inputVal = inputElement.value;
+  const validation = validateInput(inputVal);
+  if (!validation.valid) {
+    alert(validation.message);
+    return;
+  }
+  currentQuery = inputVal.trim();
   currentPage = 1;
   renderImages(currentQuery, currentPage);
 });
 
 document.querySelector('.gallery-more').addEventListener('click', function() {
-  if (isLastPage) return;
+  if (isLastPage || isLoading) return;
   currentPage += 1;
   renderImages(currentQuery, currentPage, true);
 });
