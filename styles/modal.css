@@ -41,3 +41,18 @@
     background: transparent;
     z-index: 1;
 }
+
+
+.modal-close {
+    font-size: 2rem;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    z-index: 3;
+    line-height: 1;
+}
