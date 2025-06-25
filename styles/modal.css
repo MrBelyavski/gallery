@@ -1,0 +1,43 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+}
+.modal[style*="display: block"] {
+    display: flex !important;
+}
+.modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+.modal-image {
+    max-width: 80vw;
+    max-height: 80vh;
+    display: block;
+}
+#gallery[inert] {
+    filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+}
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 1;
+}
