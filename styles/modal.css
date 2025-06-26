@@ -1,0 +1,98 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.modal[style*="display: block"] {
+    display: flex !important;
+}
+
+.modal-content {
+    position: relative;
+    z-index: 2;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.modal-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: block;
+    border-radius: 8px;
+}
+
+#gallery[inert] {
+    filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 1;
+}
+
+.modal-prev,
+.modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
+    background-color: #ef7c00;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 3;
+    transition: background-color 0.3s ease;
+}
+
+.modal-prev {
+    left: calc(50% - 500px);
+}
+
+.modal-next {
+    right: calc(50% - 500px);
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+    background-color: #d86e00;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: rgb(168, 163, 163);
+    cursor: pointer;
+    z-index: 3;
+    line-height: 1;
+    padding: 0;
+    opacity: 0.9;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #f0f0f0;
+    opacity: 1;
+}
