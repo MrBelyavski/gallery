@@ -3,15 +3,19 @@
 .modal {
     position: fixed;
     inset: 0;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
     z-index: 1000;
 }
 
-.modal[style*="display: block"] {
-    display: flex !important;
+.modal.open {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal-content {
@@ -23,6 +27,12 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--radius);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.modal.open .modal-content {
+    transform: scale(1);
 }
 
 .modal-image {
@@ -66,7 +76,7 @@
 }
 
 .modal-prev {
-    left: calc(50% - 31.25rem); /* 500px */
+    left: calc(50% - 31.25rem);
 }
 
 .modal-next {
@@ -107,6 +117,7 @@
         right: 1.5rem;
     }
 }
+
 @media (max-width: 600px) {
     .modal-content {
         max-width: 98vw;
