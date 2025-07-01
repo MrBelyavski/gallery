@@ -22,11 +22,13 @@
         <form>
             <input type="text" class="search-input" placeholder="Search High Resolution Images">
             <button type="submit"></button>
+            <div id="search-error" class="search-error"></div>
         </form>
     </section>
 
     <section id="gallery">
         <div class="gallery-status"></div>
+        <div class="gallery-loader" style="display:none;">Загрузка...</div>
         <div class="gallery-grid"></div>
         <button class="gallery-more" style="display:none;">Показать больше</button>
     </section>

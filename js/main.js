@@ -4,6 +4,11 @@ import { validateInput } from './validation.js';
 const GALLERY = document.querySelector('.gallery-grid');
 const STATUS = document.querySelector('.gallery-status');
 const MORE_BTN = document.querySelector('.gallery-more');
+const LOADER = document.querySelector('.gallery-loader');
+
+const SEARCH_FORM = document.querySelector('.search form');
+const INPUT_ELEMENT = SEARCH_FORM.querySelector('.search-input');
+const ERROR_CONTAINER = SEARCH_FORM.querySelector('.search-error');
 
 const MESSAGES = {
   LOAD_ERROR: 'Ошибка загрузки изображений',
@@ -36,6 +41,7 @@ function createImageElement(img) {
   const imgElem = document.createElement('img');
   imgElem.src = img.urls.small;
   imgElem.alt = img.alt_description;
+  imgElem.loading = 'lazy';
   imgElem.onerror = () => {
     const textElem = document.createElement('div');
     textElem.textContent = MESSAGES.IMAGE_ERROR;
@@ -50,7 +56,7 @@ async function fetchImages(query, page) {
 }
 
 function renderImagesToGallery(images, append = false) {
-  if (!append) GALLERY.innerHTML = '';
+  if (!append) GALLERY.textContent = '';
   images.forEach(img => {
     const imgElem = createImageElement(img);
     GALLERY.appendChild(imgElem);
@@ -67,12 +73,29 @@ function updatePagination(imagesLength) {
   }
 }
 
+function showLoader() {
+  if (LOADER) LOADER.style.display = '';
+}
+
+function hideLoader() {
+  if (LOADER) LOADER.style.display = 'none';
+}
+
+function clearError() {
+  ERROR_CONTAINER.textContent = '';
+}
+
+function showError(message) {
+  ERROR_CONTAINER.textContent = message;
+}
+
 async function renderImages(query = '', page = 1, append = false) {
   if (isLoading) return;
   isLoading = true;
+  showLoader();
 
   try {
-    if (!append) GALLERY.innerHTML = '';
+    if (!append) GALLERY.textContent = '';
     const images = await fetchImages(query, page);
 
     if (!append && images.length === 0) {
@@ -89,21 +112,23 @@ async function renderImages(query = '', page = 1, append = false) {
     showStatusMessage(MESSAGES.LOAD_ERROR);
     hideMoreButton();
   } finally {
+    hideLoader();
     isLoading = false;
   }
 }
 
-
-
 function handleSearchSubmit(e) {
   e.preventDefault();
-  const inputElement = document.querySelector('.search-input');
-  const inputVal = inputElement.value;
+  clearError();
+
+  const inputVal = INPUT_ELEMENT.value;
   const validation = validateInput(inputVal);
   if (!validation.valid) {
-    alert(validation.message);
+    showError(validation.message);
+    INPUT_ELEMENT.focus();
     return;
   }
+
   currentQuery = inputVal.trim();
   currentPage = 1;
   renderImages(currentQuery, currentPage);
@@ -121,5 +146,5 @@ window.onload = () => {
   renderImages(currentQuery, currentPage);
 };
 
-document.querySelector('.search').addEventListener('submit', handleSearchSubmit);
+SEARCH_FORM.addEventListener('submit', handleSearchSubmit);
 MORE_BTN.addEventListener('click', handleMoreClick);
