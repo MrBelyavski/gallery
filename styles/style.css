@@ -240,6 +240,9 @@ footer > section:last-of-type {
     .search h1 {
         font-size: 1.1rem;
     }
+    .search-error {
+    min-height: 3.5rem;
+    }
     .gallery-grid {
         grid-template-columns: 1fr;
         gap: var(--gap-xs);
