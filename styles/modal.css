@@ -1,3 +1,5 @@
+@import url('theme.css');
+
 .modal {
     position: fixed;
     inset: 0;
@@ -20,14 +22,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: var(--radius);
 }
 
 .modal-image {
     max-width: 90vw;
     max-height: 90vh;
     display: block;
-    border-radius: 8px;
+    border-radius: var(--radius);
 }
 
 #gallery[inert] {
@@ -50,40 +52,40 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
+    width: 2.75rem;
+    height: 2.75rem;
     font-size: 1.6rem;
-    background-color: #ef7c00;
-    color: white;
+    background-color: var(--color-accent);
+    color: #fff;
     border: none;
     border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     z-index: 3;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition);
 }
 
 .modal-prev {
-    left: calc(50% - 500px);
+    left: calc(50% - 31.25rem); /* 500px */
 }
 
 .modal-next {
-    right: calc(50% - 500px);
+    right: calc(50% - 31.25rem);
 }
 
 .modal-prev:hover,
 .modal-next:hover {
-    background-color: #d86e00;
+    background-color: var(--color-accent-hover);
 }
 
 .modal-close {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 0.75rem;
+    right: 0.75rem;
     background: none;
     border: none;
     font-size: 2rem;
-    color: rgb(168, 163, 163);
+    color: var(--color-modal-close);
     cursor: pointer;
     z-index: 3;
     line-height: 1;
@@ -93,17 +95,16 @@
 }
 
 .modal-close:hover {
-    color: #f0f0f0;
+    color: var(--color-modal-close-hover);
     opacity: 1;
 }
 
-
 @media (max-width: 900px) {
     .modal-prev {
-        left: 24px;
+        left: 1.5rem;
     }
     .modal-next {
-        right: 24px;
+        right: 1.5rem;
     }
 }
 @media (max-width: 600px) {
@@ -117,13 +118,13 @@
     }
     .modal-prev,
     .modal-next {
-        width: 36px;
-        height: 36px;
+        width: 2.25rem;
+        height: 2.25rem;
         font-size: 1.2rem;
     }
     .modal-close {
-        top: 6px;
-        right: 6px;
+        top: 0.4rem;
+        right: 0.4rem;
         font-size: 1.5rem;
     }
 }

@@ -1,0 +1,24 @@
+:root {
+    --color-primary: #f7941e;
+    --color-primary-hover: #e57f0c;
+    --color-accent: #ef7c00;
+    --color-accent-hover: #d86e00;
+    --color-bg: #ffffff;
+    --color-text: #000000;
+    --color-header-bg: #1c1c1c;
+    --color-footer-bg: #1c1c1c;
+    --color-footer-text: #cccccc;
+    --color-footer-muted: #666666;
+    --color-modal-close: #a8a3a3;
+    --color-modal-close-hover: #f0f0f0;
+    --radius: 0.5rem;
+    --radius-sm: 0.4rem;
+    --radius-lg: 0.8rem;
+    --gap: 1.5rem;
+    --gap-sm: 1rem;
+    --gap-xs: 0.7rem;
+    --transition: 0.3s ease;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --section-padding: 2rem;
+    --section-padding-sm: 1.2rem;
+}
