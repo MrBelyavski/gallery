@@ -109,6 +109,7 @@ header nav a:hover {
 .gallery-status {}
 
 .gallery-grid {
+    min-height: 450px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
     gap: var(--gap);
