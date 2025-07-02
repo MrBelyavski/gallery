@@ -21,6 +21,12 @@ ul {
     list-style: none;
 }
 
+.logo-img {
+  width: 220px;
+  height: auto;
+  display: block; 
+}
+
 header {
     background-color: var(--color-header-bg);
     color: #fff;
@@ -86,10 +92,7 @@ header nav a:hover {
     cursor: pointer;
 }
 
-.search button::before {
-    content: "🔍";
-    font-size: 1.2rem;
-}
+
 .search-error {
   flex-basis: 100%;
   margin-top: 4px;
