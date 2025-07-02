@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/assets/favicon-CjWD3jKK.png"
+  />
+  <script type="module" crossorigin src="/assets/index-BvFX0pq2.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CX1sfGm_.css">
+</head>
+<body>
+
+    <header>
+        <img src="/assets/logo-DOA7JS9O.png" class="logo-img" alt="MODSEN Gallery">
+        <nav>
+            <a href="#gallery">Gallery</a>
+        </nav>
+    </header>
+
+    <section class="search">
+        <h1>Let's Find Some <span class=orange>Images</span> Here!</h1>
+        <form>
+            <input type="text" class="search-input" placeholder="Search High Resolution Images">
+            <button type="submit" aria-label="Поиск">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16.5" y1="16.5" x2="22" y2="22" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+            <div id="search-error" class="search-error"></div>
+        </form>
+    </section>
+
+    <section id="gallery">
+        <div class="gallery-status"></div>
+        <div class="gallery-loader" style="display:none;"></div>
+        <div class="gallery-grid"></div>
+        <button class="gallery-more" style="display:none;">Показать больше</button>
+    </section>
+
+    <footer>
+        <section>
+            <h2>MODSEN GALLERY</h2>
+            <p>We have images that capture every mood and inspire every vision. From breathtaking landscapes to vibrant portraits.</p>
+        </section>
+        <nav>
+            <section>
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Works</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Customer Support</a></li>
+                    <li><a href="#">Delivery Details</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>FAQ</h3>
+                <ul>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Manage Deliveries</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">Payments</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Free eBooks</a></li>
+                    <li><a href="#">Development Tutorial</a></li>
+                    <li><a href="#">How to - Blog</a></li>
+                    <li><a href="#">Youtube Playlist</a></li>
+                </ul>
+            </section>
+        </nav>
+        <section>
+            <p>Modsen.gallery © 2000–2025, All Rights Reserved</p>
+        </section>
+    </footer>
+
+    <div class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <button class="modal-prev">&#8592;</button>
+            <img class="modal-image" src="" alt="">
+            <button class="modal-next">&#8594;</button>
+        </div>
+    </div>
+
+</body>
+</html>
